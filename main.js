@@ -20,6 +20,8 @@ httpRequest.onreadystatechange = function() {
                  var infoContent = ` 
                  <div class="container">
                   <p> ${result.question} </p>
+                  <button type ="button" id="true">True</button>
+                  <button type ="button" id="false">False</button>
                 </div> `;
                 document.getElementById(info.id).innerHTML = infoContent; 
              });
