@@ -21,3 +21,10 @@ button:hover{
     box-shadow: #ccc 2px 2px 2px;
     text-decoration: underline;
 }
+.container #true {
+    display: none;
+}
+
+.container #false {
+    display: none;
+}
