@@ -4,14 +4,18 @@ document.addEventListener('DOMContentLoaded', function (){
     var content = document.getElementById("content");
     var res;
 
-    
+    // XMLHttpRequest och status för den
+
 var httpRequest = new XMLHttpRequest();   
 httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === 4) {
         if (httpRequest.status === 200) {
              console.log(httpRequest.response);
              res = httpRequest.response;
-                        
+                 
+             
+             // här hämtar vi och skriver ut frågorna ut, skapar html div mm
+
                  res.results.forEach(function(result, index ) {
                  var info = document.createElement('div');
                  info.classList.add('info');
@@ -26,41 +30,33 @@ httpRequest.onreadystatechange = function() {
                   <button type ="button" class="btnAll" id="btnFalse">False</button>
                   </div> `;
                 
-
+                    // ersätter html med de vi hämtade oven
 
                 document.getElementById(info.id).innerHTML = infoContent; 
              });
 
-             //
 
-  //  use if needed    // var container = document.getElementsByClassName("conteiner");
- //  use if needed   // var button = document.getElementsByClassName('btnAll');
- var correctAnswer = res.results[1].correct_answer;
-            // console.log(correctAnswer);
+                var correctAnswer = res.results[1].correct_answer;
+                    console.log(correctAnswer);
 
+                    // kopplar ihop knapparna och lagrar input
 
-             content.addEventListener('click', function(event){
-               if (event.target.nodeName == 'BUTTON') {
-
-                    event.target.classList.remove('remove');
-                   event.target.classList.add('trueAnswer');
+                content.addEventListener('click', function(event){
+                    if (event.target.btnTrue == 'BUTTON') {
+               
                     }
+                   
          
                 });
-             //
+             // felmedelande från XMLHttpRequest
         } else  {
                 console.log('Något är fel, gör om, gör rätt!');
                 }
     }
-
-
-    
+  
 };
 
-
-/*
-
-*/
+    // avslutar XMLHttpRequest, med att öppna o skicka den, även omvandla till JSON
 
     httpRequest.open('GET', 'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=boolean');
     httpRequest.responseType = 'json';
