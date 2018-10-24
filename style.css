@@ -21,13 +21,10 @@ button:hover{
     box-shadow: #ccc 2px 2px 2px;
     text-decoration: underline;
 }
- .remove{
+ .correctA{
     display: none;
 }
 
- .falseQ {
-    display: none;
-}   
 
 
 .trueAnswer {
@@ -46,7 +43,8 @@ button:hover{
 text-align: center;
 }
 .true{
-    background-color: rgb(13, 255, 13);
+    background-color: rgba(0, 90, 0, 0.788);
+    
 }
 
 .false{

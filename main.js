@@ -24,8 +24,7 @@ httpRequest.onreadystatechange = function() {
                  var infoContent = ` 
                  <div class="container">
                   <p> ${result.question} </p>
-                  <p class="remove"> ${result.correct_answer} </p>
-                  <p class="falseQ"> ${result.incorrect_answers[0]} </p>
+                  <p class="correctA"> ${result.correct_answer} </p>
                   <button type ="button" class="btnAll" id="btnTrue">True</button>
                   <button type ="button" class="btnAll" id="btnFalse">False</button>
                   </div> `;
@@ -42,10 +41,10 @@ httpRequest.onreadystatechange = function() {
                     // kopplar ihop knapparna och lagrar input
 
                 content.addEventListener('click', function(event){
-                    if (event.target.btnTrue == 'BUTTON') {
-               
+                    if (event.target.nodeName == 'BUTTON') {
+                
+                        event.target.classList.add('true');
                     }
-                   
          
                 });
              // felmedelande från XMLHttpRequest
