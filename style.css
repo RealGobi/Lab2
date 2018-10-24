@@ -50,3 +50,8 @@ text-align: center;
 .falseC{
     background-color: darkred;
 }
+
+
+.showA{
+display: none;
+}
