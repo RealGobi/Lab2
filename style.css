@@ -42,11 +42,11 @@ button:hover{
     margin-top: 2.5%;
 text-align: center;
 }
-.true{
+.trueC{
     background-color: rgba(0, 90, 0, 0.788);
     
 }
 
-.false{
+.falseC{
     background-color: darkred;
 }
