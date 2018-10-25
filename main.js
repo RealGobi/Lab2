@@ -18,14 +18,28 @@ httpRequest.onreadystatechange = function() {
 
              questionsLength = res.results.length;
              document.getElementById("activQuestion").innerHTML = res.results[activQuestion].question;
+             
                 console.log(res.results[answersToQuestion].correct_answer);
              }
              question();
 
              function answers(){
+                var answer = userInput;
 
+
+                if (answer == res.results[answersToQuestion].correct_answer){
+                    activQuestion++;
+                    answersToQuestion++;
+                    alert ('Answer was correct!');
+                }
+                else {
+                    activQuestion++;
+                    alert ('Answer was crap!');
+
+                }
+                document.getElementById('answer').innerHTML = res.results[answersToQuestion].correct_answer;
              }
-
+             answers();
              // felmedelande från XMLHttpRequest
         } else  {
                 console.log('Något är fel, gör om, gör rätt!');

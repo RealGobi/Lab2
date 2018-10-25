@@ -1,57 +1,13 @@
+html {
+    background-color: white;
+}
+
 body {
     background: #ccc;
-}
+    width: 90%;
+    margin: auto;
+    text-align: center;
 
-.container {
-font-family:Arial, Helvetica, sans-serif;
-font-size:calc(12px + .4vw);
-background-color: #eeeeee;
-text-align: center;
-}
-.container p{
-    padding: 2%;
-}
-button {
-    padding: 1%;
-    margin: 1%;
-    background-color: peachpuff;
-
-}
-button:hover{
-    box-shadow: #ccc 2px 2px 2px;
-    text-decoration: underline;
-}
- .correctA{
-    display: none;
 }
 
 
-
-.trueAnswer {
-    background-color:#ccc;
-  }
-
-.resultat{
-    font-size:calc(12px + .4vw);
-}
-.resultat:hover {
-    box-shadow: rgb(250, 103, 103) 2px 2px 2px;
-    text-decoration: underline;
-}
-#center, h1{
-    margin-top: 2.5%;
-text-align: center;
-}
-.trueC{
-    background-color: rgba(0, 90, 0, 0.788);
-    
-}
-
-.falseC{
-    background-color: darkred;
-}
-
-
-.showA{
-display: none;
-}
