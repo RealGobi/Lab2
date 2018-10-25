@@ -13,6 +13,11 @@ body {
     font-family: monospace;
     margin: 5%;
 }
-.done{
-    background-color: chartreuse;
+.True{
+    background-color:rgb(0, 0, 0);
+    color: gold;
+}
+.False {
+    background-color: rgb(0, 0, 0);
+    color: rgb(182, 0, 189);
 }

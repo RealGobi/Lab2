@@ -22,34 +22,74 @@ httpRequest.onreadystatechange = function() {
                     <h4> ${res.results[activQuestion].question} </h4>
                     <!-- <input type="button" value="True"> -->
                     <!-- <input type="button" value="False"> -->
-                    <button id="true">True</button>
-                    <button id="false">False</button>
+                    <button id="True">True</button>
+                    <button id="False">False</button>
                   </div>
                 `; 
+                var correctAnswer = res.results[answersToQuestion].correct_answer;
+                console.log(res.results[answersToQuestion].correct_answer);
+                
+                var btnTrue = document.getElementById('True');
+                var btnFalse = document.getElementById('False');
+                btnTrue = 'True';
+                btnFalse = 'False';
+                
+             content.addEventListener('click', function(event){
+                 if (event.target.nodeName == 'BUTTON') {
+                     
+                     if (btnTrue == correctAnswer){
+                         event.target.classList.add('True');
+                         activQuestion++;
+                         points++;
+                         console.log(points);
+                     }
+                      if (btnFalse == correctAnswer){
+                         event.target.classList.add('False');
+                         activQuestion++;
+                         points++;
+                         console.log(points);
+                     }
+                    else {
+                        activQuestion++;
+                        console.log(points);
+                    }
+                 }
+      
+             });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                // var input = document.getElementsById('true'|| "false" );
           
-              //  var answer = input;
-               // console.log(answer);
+            //   //  var answer = input;
+            //    // console.log(answer);
 
-
-
-
-               document.addEventListener('DOMContentLoaded', function(){
-                var sektion = document.getElementsByClassName("designToQuestion");
-                sektion[0].addEventListener('click', function(e){
-                    if (e.target.nodeName == "BUTTON") {
-                        e.target.classList.add("done");
-                      }
-                    });
+            //    document.addEventListener('DOMContentLoaded', function(){
+            //     var sektion = document.getElementsByClassName("designToQuestion");
+            //     sektion.addEventListener('click', function(e){
+            //         if (e.target.nodeName == "BUTTON") {
+            //             e.target.classList.add("done");
+            //           }
+            //         });
               
-                  });
+            //       });
 
                 document.getElementById("content").innerHTML = questionContent; 
             
 
-              console.log(res.results[answersToQuestion].correct_answer);
+              
              }
 
              question();
