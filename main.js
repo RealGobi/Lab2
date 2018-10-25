@@ -16,6 +16,7 @@ httpRequest.onreadystatechange = function() {
              console.log(httpRequest.response);
              res = httpRequest.response;
                  
+
              function question(){
                 var questionContent = ` 
                   <div class="designToQuestion">
@@ -26,92 +27,52 @@ httpRequest.onreadystatechange = function() {
                     <button id="False">False</button>
                   </div>
                 `; 
-                var correctAnswer = res.results[answersToQuestion].correct_answer;
                 console.log(res.results[answersToQuestion].correct_answer);
-                
-                var btnTrue = document.getElementById('True');
+            
+             document.getElementById("content").innerHTML = questionContent; 
+            
+             }
+
+
+             var correctAnswer = res.results[answersToQuestion].correct_answer;
+
+             var btnTrue = document.getElementById('True');
                 var btnFalse = document.getElementById('False');
                 btnTrue = 'True';
                 btnFalse = 'False';
                 
+              
+
              content.addEventListener('click', function(event){
                  if (event.target.nodeName == 'BUTTON') {
                      
                      if (btnTrue == correctAnswer){
                          event.target.classList.add('True');
-                         activQuestion++;
                          points++;
+                         activQuestion++;
                          console.log(points);
+                         question();
                      }
                       if (btnFalse == correctAnswer){
                          event.target.classList.add('False');
                          activQuestion++;
                          points++;
                          console.log(points);
+                         question();
                      }
                     else {
                         activQuestion++;
                         console.log(points);
+                        question();
                     }
                  }
       
              });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-               // var input = document.getElementsById('true'|| "false" );
-          
-            //   //  var answer = input;
-            //    // console.log(answer);
-
-            //    document.addEventListener('DOMContentLoaded', function(){
-            //     var sektion = document.getElementsByClassName("designToQuestion");
-            //     sektion.addEventListener('click', function(e){
-            //         if (e.target.nodeName == "BUTTON") {
-            //             e.target.classList.add("done");
-            //           }
-            //         });
-              
-            //       });
-
-                document.getElementById("content").innerHTML = questionContent; 
-            
-
-              
-             }
-
              question();
 
 
 
-             function answers(){
-
-
-                if (answer == res.results[answersToQuestion].correct_answer){
-                    activQuestion++;
-                    points++;
-                  // alert ('Answer was correct!');
-                }
-                else {
-                    activQuestion++;
-                  // alert ('Answer was crap!');
-
-                }
-               // document.getElementById('answer').innerHTML = res.results[answersToQuestion].correct_answer;
-             }
-             answers();
              // felmedelande från XMLHttpRequest
         } else  {
                 console.log('Något är fel, gör om, gör rätt!');
