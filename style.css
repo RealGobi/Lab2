@@ -7,7 +7,8 @@ body {
     width: 90%;
     margin: auto;
     text-align: center;
-
 }
 
-
+.designToQuestion {
+    font-family: monospace;
+}

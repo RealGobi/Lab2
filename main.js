@@ -15,12 +15,20 @@ httpRequest.onreadystatechange = function() {
              res = httpRequest.response;
                  
              function question(){
-
-             questionsLength = res.results.length;
-               
-             document.getElementById("activQuestion").innerHTML = res.results[activQuestion].question;
+                let newDiv = document.createElement("div"); // skapa en ny div
+                newDiv.classList.add("hej")
+                var questionContent = ` 
+                  <div class="designToQuestion">
+                    <h4> ${res.results[activQuestion].question} </h4>
+                  </div>
+                `; //interpolering 
+         document.getElementById("content").innerHTML = questionContent; //letar upp card.id klistrar över med cardContent.
+            
+             //questionsLength = res.results.length;
+     
+             // document.getElementById("activQuestion").innerHTML = res.results[activQuestion].question;
              
-                console.log(res.results[answersToQuestion].correct_answer);
+              console.log(res.results[answersToQuestion].correct_answer);
              }
              question();
 
