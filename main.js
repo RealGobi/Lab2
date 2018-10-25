@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function (){
     var res;
     var activQuestion = 0;
     var answersToQuestion = 0;
+    var points = 0;
+
     // XMLHttpRequest och status för den
 
 var httpRequest = new XMLHttpRequest();   
@@ -15,38 +17,59 @@ httpRequest.onreadystatechange = function() {
              res = httpRequest.response;
                  
              function question(){
-                let newDiv = document.createElement("div"); // skapa en ny div
-                newDiv.classList.add("hej")
                 var questionContent = ` 
                   <div class="designToQuestion">
                     <h4> ${res.results[activQuestion].question} </h4>
+                    <!-- <input type="button" value="True"> -->
+                    <!-- <input type="button" value="False"> -->
+                    <button id="true">True</button>
+                    <button id="false">False</button>
                   </div>
-                `; //interpolering 
-         document.getElementById("content").innerHTML = questionContent; //letar upp card.id klistrar över med cardContent.
+                `; 
+
+
+               // var input = document.getElementsById('true'|| "false" );
+          
+              //  var answer = input;
+               // console.log(answer);
+
+
+
+
+               document.addEventListener('DOMContentLoaded', function(){
+                var sektion = document.getElementsByClassName("designToQuestion");
+                sektion[0].addEventListener('click', function(e){
+                    if (e.target.nodeName == "BUTTON") {
+                        e.target.classList.add("done");
+                      }
+                    });
+              
+                  });
+
+                document.getElementById("content").innerHTML = questionContent; 
             
-             //questionsLength = res.results.length;
-     
-             // document.getElementById("activQuestion").innerHTML = res.results[activQuestion].question;
-             
+
               console.log(res.results[answersToQuestion].correct_answer);
              }
+
              question();
 
+
+
              function answers(){
-                var answer = userInput;
 
 
                 if (answer == res.results[answersToQuestion].correct_answer){
                     activQuestion++;
-                    answersToQuestion++;
-                    alert ('Answer was correct!');
+                    points++;
+                  // alert ('Answer was correct!');
                 }
                 else {
                     activQuestion++;
-                    alert ('Answer was crap!');
+                  // alert ('Answer was crap!');
 
                 }
-                document.getElementById('answer').innerHTML = res.results[answersToQuestion].correct_answer;
+               // document.getElementById('answer').innerHTML = res.results[answersToQuestion].correct_answer;
              }
              answers();
              // felmedelande från XMLHttpRequest
