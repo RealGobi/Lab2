@@ -17,6 +17,10 @@ httpRequest.onreadystatechange = function() {
              function question(){
 
              questionsLength = res.results.length;
+
+
+
+             
              document.getElementById("activQuestion").innerHTML = res.results[activQuestion].question;
              
                 console.log(res.results[answersToQuestion].correct_answer);
