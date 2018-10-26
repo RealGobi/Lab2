@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function (){
     var content = document.getElementById("content");
+
     var res;
     var activQuestion = 0;
     var answersToQuestion = 0;
@@ -18,23 +19,22 @@ httpRequest.onreadystatechange = function() {
                  
 
              function question(){
+              
                 var questionContent = ` 
                   <div class="designToQuestion">
                     <h4> ${res.results[activQuestion].question} </h4>
-                    <!-- <input type="button" value="True"> -->
-                    <!-- <input type="button" value="False"> -->
                     <button id="True">True</button>
                     <button id="False">False</button>
                   </div>
                 `; 
-                console.log(res.results[answersToQuestion].correct_answer);
+                console.log(res.results[activQuestion].correct_answer);
             
              document.getElementById("content").innerHTML = questionContent; 
             
              }
 
 
-             var correctAnswer = res.results[answersToQuestion].correct_answer;
+             var correctAnswer = res.results[activQuestion].correct_answer;
 
              var btnTrue = document.getElementById('True');
                 var btnFalse = document.getElementById('False');
@@ -44,8 +44,17 @@ httpRequest.onreadystatechange = function() {
               
 
              content.addEventListener('click', function(event){
+
+
+                while (activQuestion < 11) {
+                    getResult();
+                    //  setTimeout(function(){
+                   //   window.location.reload(1);
+                  // }, 10000);
+                }
                  if (event.target.nodeName == 'BUTTON') {
-                     
+   
+                    
                      if (btnTrue == correctAnswer){
                          event.target.classList.add('True');
                          points++;
@@ -65,11 +74,41 @@ httpRequest.onreadystatechange = function() {
                         console.log(points);
                         question();
                     }
+                    
                  }
       
              });
 
-             question();
+            
+             function start(){
+                 
+                var startQuiz = ` 
+                  <div>
+                
+                    <button id="start">Start Quiz</button>
+                  </div>
+                `; 
+                document.getElementById("start").innerHTML = startQuiz; 
+             }
+             start();
+             var startPlaceholder = document.getElementById("start");
+             startPlaceholder.addEventListener('click', function(event){
+                if (event.target.nodeName == 'BUTTON') {
+              
+                    question();
+                    event.target.classList.add('hide');
+  
+                    }});
+// call function                   getResult(); after q 10 ??
+                    function getResult() {
+                        
+                var result = ` 
+                              <div>
+              <p>You got ${points} of 10, Good jod!</p>
+                              </div>
+                                      `; 
+              document.getElementById("result").innerHTML = result; 
+                    }
 
 
 

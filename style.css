@@ -4,9 +4,10 @@ html {
 
 body {
     background: #ccc;
-    width: 90%;
+    width: 80%;
     margin: auto;
     text-align: center;
+    padding: 2.55%;
 }
 
 .designToQuestion {
@@ -20,4 +21,7 @@ body {
 .False {
     background-color: rgb(0, 0, 0);
     color: rgb(182, 0, 189);
+}
+.hide{
+    display: none;
 }
