@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function (){
 
     var res;
     var activQuestion = 0;
-    var answersToQuestion = 0;
     var points = 0;
 
     // XMLHttpRequest och status för den
@@ -44,17 +43,14 @@ httpRequest.onreadystatechange = function() {
               
 
              content.addEventListener('click', function(event){
-
-
-                while (activQuestion < 11) {
-                    getResult();
-                    //  setTimeout(function(){
-                   //   window.location.reload(1);
-                  // }, 10000);
-                }
                  if (event.target.nodeName == 'BUTTON') {
-   
-                    
+                    if (activQuestion == 10){
+
+                        getResult();
+                          //  setTimeout(function(){
+                         //   window.location.reload(1);
+                        // }, 10000);
+                    }
                      if (btnTrue == correctAnswer){
                          event.target.classList.add('True');
                          points++;
@@ -99,7 +95,7 @@ httpRequest.onreadystatechange = function() {
                     event.target.classList.add('hide');
   
                     }});
-// call function                   getResult(); after q 10 ??
+
                     function getResult() {
                         
                 var result = ` 
