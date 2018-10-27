@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function (){
     var res;
     var activQuestion = 0;
     var points = 0;
-
+   
     // XMLHttpRequest och status för den
 
 var httpRequest = new XMLHttpRequest();   
@@ -18,7 +18,9 @@ httpRequest.onreadystatechange = function() {
                  
 
              function question(){
-              
+                if (activQuestion < 9){   
+                
+               activQuestion++;
                 var questionContent = ` 
                   <div class="designToQuestion">
                     <h4> ${res.results[activQuestion].question} </h4>
@@ -27,48 +29,47 @@ httpRequest.onreadystatechange = function() {
                   </div>
                 `; 
                 console.log(res.results[activQuestion].correct_answer);
-            
+                 } else {
+                    alert ('Ready for you result?');
+                    getResult();
+                
+                 }
              document.getElementById("content").innerHTML = questionContent; 
-            
              }
+           
 
 
              var correctAnswer = res.results[activQuestion].correct_answer;
-
-             var btnTrue = document.getElementById('True');
-                var btnFalse = document.getElementById('False');
-                btnTrue = 'True';
-                btnFalse = 'False';
-                
-            
-
-             content.addEventListener('click', function(event){
-                 if (event.target.nodeName == 'BUTTON') {
-                    if (activQuestion == 9){
-                        
-                        activQuestion++;
-                      alert('Push OK to se your score!');
-                      getResult();
-                           setTimeout(function(){
-                           window.location.reload(1);
-                        }, 10000);  
-                }
-                     if (correctAnswer == btnFalse || btnTrue){
-                         event.target.classList.add('True');
-                         points++;
-                         activQuestion++;
-                         console.log(points);
-                         question();
-                     } else if (correctAnswer != btnFalse || btnTrue)
-                     { activQuestion++;
-                        console.log(points);
-                        question();
-                    } 
-
-                    
-                 }
       
-             });
+                
+                content.addEventListener('click', function(event) { 
+                    if (event.target.id == "True") { 
+                        if (correctAnswer == "True") {
+                            points++;
+                         
+                            question();
+                        } else {
+                           
+                            question();
+                        }
+                        
+                    }
+            
+                    else if (event.target.id == "False") { 
+                        if (correctAnswer == "False") {
+                            points++;
+                          
+                            question();
+                        } else {
+                      
+                            question();
+                          }
+                       
+  
+                    }
+                 });
+                       
+             
     
             
              function start(){
@@ -95,6 +96,7 @@ httpRequest.onreadystatechange = function() {
                         
                 var result = ` 
                               <div>
+                             
               <p>You got ${points} of 10, Good jod!</p>
                               </div>
                                       `; 
