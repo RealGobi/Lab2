@@ -2,10 +2,11 @@
 
 document.addEventListener('DOMContentLoaded', function (){
     var content = document.getElementById("content");
-
+    // deklarerat variablar
     var res;
     var activQuestion = 0;
     var points = 0;
+
    
     // XMLHttpRequest och status för den
 
@@ -15,21 +16,20 @@ httpRequest.onreadystatechange = function() {
         if (httpRequest.status === 200) {
              console.log(httpRequest.response);
              res = httpRequest.response;
-                 
+    // funktionen som skriver ut frågor. Jag testade här att lägga in en "if","else" redan här, för at få den att räkna med sista frågan, men samma resultat 
 
              function question(){
-                if (activQuestion < 9){   
-                
-               activQuestion++;
+                if (activQuestion < 10){   
                 var questionContent = ` 
                   <div class="designToQuestion">
-                    <h4> ${res.results[activQuestion].question} </h4>
+                    <h4> ${res.results[activQuestion].question} </h4> <!-- skriver ut frågan -->
                     <button id="True">True</button>
                     <button id="False">False</button>
                   </div>
                 `; 
+                 activQuestion++; // testa att lägga activQ här
                 console.log(res.results[activQuestion].correct_answer);
-                 } else {
+                 } else { // skriver ut resultatet
                     alert ('Ready for you result?');
                     getResult();
                 
@@ -41,7 +41,7 @@ httpRequest.onreadystatechange = function() {
 
              var correctAnswer = res.results[activQuestion].correct_answer;
       
-                
+    // if-sats för frågorna
                 content.addEventListener('click', function(event) { 
                     if (event.target.id == "True") { 
                         if (correctAnswer == "True") {
@@ -70,7 +70,7 @@ httpRequest.onreadystatechange = function() {
                  });
                        
              
-    
+     // start funktionen
             
              function start(){
                  
@@ -92,6 +92,7 @@ httpRequest.onreadystatechange = function() {
   
                     }});
 
+    // resultat funktionen
                     function getResult() {
                         
                 var result = ` 
@@ -105,7 +106,7 @@ httpRequest.onreadystatechange = function() {
 
 
 
-             // felmedelande från XMLHttpRequest
+     // felmedelande från XMLHttpRequest
         } else  {
                 console.log('Något är fel, gör om, gör rätt!');
                 }
