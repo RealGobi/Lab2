@@ -23,8 +23,8 @@ httpRequest.onreadystatechange = function() {
                 var questionContent = ` 
                   <div class="designToQuestion">
                     <h4> ${res.results[activQuestion].question} </h4> <!-- skriver ut frågan -->
-                    <button id="True">True</button>
-                    <button id="False">False</button>
+                    <button id="true">True</button>
+                    <button id="false">False</button>
                   </div>
                 `;
                 console.log(res.results[activQuestion].correct_answer);
@@ -44,7 +44,7 @@ httpRequest.onreadystatechange = function() {
       
     // if-sats för frågorna
                 content.addEventListener('click', function(event) { 
-                    if (event.target.id == "True") { 
+                    if (event.target.id == "true") { 
                         if (correctAnswer == "True") {
                             points++;
                          
@@ -56,7 +56,7 @@ httpRequest.onreadystatechange = function() {
                         
                     }
             
-                    else if (event.target.id == "False") { 
+                    else if (event.target.id == "false") { 
                         if (correctAnswer == "False") {
                             points++;
                           
@@ -81,10 +81,10 @@ httpRequest.onreadystatechange = function() {
                     <button id="start">Start Quiz</button>
                   </div>
                 `; 
-                document.getElementById("start").innerHTML = startQuiz; 
+                document.getElementById("startDiv").innerHTML = startQuiz; 
              }
              start();
-             var startPlaceholder = document.getElementById("start");
+             var startPlaceholder = document.getElementById("startDiv");
              startPlaceholder.addEventListener('click', function(event){
                 if (event.target.nodeName == 'BUTTON') {
               
