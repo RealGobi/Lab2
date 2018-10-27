@@ -26,13 +26,14 @@ httpRequest.onreadystatechange = function() {
                     <button id="True">True</button>
                     <button id="False">False</button>
                   </div>
-                `; 
-                 activQuestion++; // testa att lägga activQ här
+                `;
                 console.log(res.results[activQuestion].correct_answer);
-                 } else { // skriver ut resultatet
+                activQuestion++; // testa att lägga activQ här 
+                } else { // skriver ut resultatet
                     alert ('Ready for you result?');
                     getResult();
-                
+                    setInterval(function(){ location.reload(); }, 3000);
+                set
                  }
              document.getElementById("content").innerHTML = questionContent; 
              }
