@@ -40,41 +40,36 @@ httpRequest.onreadystatechange = function() {
                 btnTrue = 'True';
                 btnFalse = 'False';
                 
-              
+            
 
              content.addEventListener('click', function(event){
                  if (event.target.nodeName == 'BUTTON') {
-                    if (activQuestion == 10){
-
-                        getResult();
-                          //  setTimeout(function(){
-                         //   window.location.reload(1);
-                        // }, 10000);
-                    }
-                     if (btnTrue == correctAnswer){
+                    if (activQuestion == 9){
+                        
+                        activQuestion++;
+                      alert('Push OK to se your score!');
+                      getResult();
+                           setTimeout(function(){
+                           window.location.reload(1);
+                        }, 10000);  
+                }
+                     if (correctAnswer == btnFalse || btnTrue){
                          event.target.classList.add('True');
                          points++;
                          activQuestion++;
                          console.log(points);
                          question();
-                     }
-                      if (btnFalse == correctAnswer){
-                         event.target.classList.add('False');
-                         activQuestion++;
-                         points++;
-                         console.log(points);
-                         question();
-                     }
-                    else {
-                        activQuestion++;
+                     } else if (correctAnswer != btnFalse || btnTrue)
+                     { activQuestion++;
                         console.log(points);
                         question();
-                    }
+                    } 
+
                     
                  }
       
              });
-
+    
             
              function start(){
                  
